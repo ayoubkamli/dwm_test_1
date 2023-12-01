@@ -1,0 +1,42 @@
+body {
+    text-align: center;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+ul {
+    margin: 0;
+    padding: 0;
+}
+img {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    width: 100%;
+}
+
+.crd-container {
+    margin: auto;
+    padding: 0;
+    text-align: left;
+    max-width: 20em;
+    border: solid navy;
+}
+
+.crd-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.crd-author {
+    font-size: smaller;
+    color: darkgray;
+}
+
+.btn-cmt {
+    width: 100%;
+}
