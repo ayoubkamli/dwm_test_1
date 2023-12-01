@@ -2,18 +2,27 @@ body {
     text-align: center;
 }
 
-li {
-    margin: 0;
+h3, h2, p, ul, li, img, div {
     padding: 0;
+    margin: 0;
+}
+
+header {
+    padding: 2rem;
+    font-size: 2em;
+    font-weight: 400;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif  ;
+}
+
+li {
     list-style-type: none;
 }
-ul {
-    margin: 0;
-    padding: 0;
+
+.btn-sort {
+    padding-bottom: 1em;
 }
+
 img {
-    margin: 0;
-    padding: 0;
     height: auto;
     width: 100%;
 }
@@ -37,6 +46,14 @@ img {
     color: darkgray;
 }
 
-.btn-cmt {
+.crd-content {
+    padding: 8px;
+}
+
+.crd-btn-cmt {
     width: 100%;
+    height: 2.5em;
+    color: aliceblue;
+    background: blue;
+    border-radius: 8px;
 }
