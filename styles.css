@@ -122,3 +122,12 @@ img:hover {
     }
 }
 
+.btn-sort {
+    background: none ;
+    border: solid 2px rgb(0, 195, 255);
+    border-radius: 5px;
+    color: rgb(0, 195, 255);
+    font-size: medium;
+
+}
+
