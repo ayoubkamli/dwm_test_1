@@ -131,3 +131,11 @@ img:hover {
 
 }
 
+.btn-sort:hover {
+    background: rgb(0, 195, 255);
+    border: solid 2px rgb(0, 195, 255);
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    font-size: medium;
+}
+
