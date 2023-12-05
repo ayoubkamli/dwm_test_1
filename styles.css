@@ -75,5 +75,50 @@ img {
 img:hover {
     filter: hue-rotate(90deg);
     filter: saturate(200%);
+    animation-name: img-huerotate;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes img-huerotate {
+    0% {
+        filter: hue-rotate(-360deg);
+    }
+    20% {
+        filter: hue-rotate(-260deg);
+    }
+    40% {
+        filter: hue-rotate(-160deg);
+    }
+    60% {
+        filter: hue-rotate(60deg);
+    }
+    80% {
+        filter: hue-rotate(160deg);
+    }
+    100% {
+        filter: hue-rotate(260deg);
+    }
+}
+
+.card {
+    animation-name: card-retate;
+    animation-duration: 500ms;
+    animation-iteration-count: 2;
+}
+
+@keyframes card-retate {
+    25% {
+        transform: rotate(-15deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+    75% {
+        transform: rotate(-15deg);
+    }
+    100% {
+        transform: rotate(15deg);
+    }
 }
 
