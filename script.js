@@ -1,33 +1,66 @@
-url = "https://jsonplaceholder.typicode.com/posts"
-async function LoadPosts(url) {
-    const response = await fetch(url);
-    const posts = await response.json();
-    AppendPosts(posts)
+baseUrl = "https://jsonplaceholder.typicode.com"
+// async function LoadPosts() {
+//     let url = (baseUrl.concat("posts"))
+//     const response = await fetch(url);
+//     const posts = await response.json();
+//     AppendPosts(posts)
+// }
+
+// LoadPosts()
+
+AppendPosts()
+
+async function postWithAuth() {
+    try {
+        let postsResponse = await fetch(`${baseUrl}/posts`);
+        let posts = await postsResponse.json();
+        let postWithAuth = await Promise.all(posts.map(async (post) => {
+             let userResponse = await fetch(`${baseUrl}/users/${post.userId}`);
+             let user = await userResponse.json();
+           return {...post, auth: user.username}
+            })
+        );
+        return postWithAuth
+    } catch {
+        console.log(Error);
+    }
 }
 
-LoadPosts(url)
 
-function AppendPosts(posts)
+
+async function AppendPosts()
 {
-    posts.forEach(post => {
-        console.log(post)
-        let item = document.createElement('li')
+    let posts = await postWithAuth();
+    c(posts)
+    posts.map((post) => {
+        
         document.getElementById('crd-container').innerHTML += `
-        <li class="card">
+            <li class="card">
             <img src="https://picsum.photos/300/200?${post.id}" alt="">
             <div class="crd-content">
                 <h2 class="crd-title">${post.title}</h2>
-                <h3 class="crd-author">Auteur</h3>
+                <h3 class="crd-author">${post.auth}</h3>
                 <p>${post.body}</p>
                 <button class="crd-btn-cmt">Commantaires</button>
             </div>
-        </li>
-        
-        `;
-    });
-
-        
-        
-                
+            </li>
+            `
+    });           
 }
+
+
+
+function SortPostsByAuth(posts) {
+    posts.sort((p1, p2) =>  (p1.auth > p2.auth) ? 1 : -1) 
+}
+
+function SortPostsByTitle(posts) {
+    posts.sort((p1, p2) =>  (p1.auth > p2.auth) ? 1 : -1) 
+}
+
+function c (msg) {
+    return (console.log(msg))
+}
+
+
 
