@@ -1,14 +1,15 @@
 baseUrl = "https://jsonplaceholder.typicode.com"
-// async function LoadPosts() {
-//     let url = (baseUrl.concat("posts"))
-//     const response = await fetch(url);
-//     const posts = await response.json();
-//     AppendPosts(posts)
-// }
 
-// LoadPosts()
+all = []
 
-AppendPosts()
+allPosts()
+
+async function allPosts() {
+    let posts = await postWithAuth()
+    AppendPosts(posts)
+    all = (posts)
+} 
+
 
 async function postWithAuth() {
     try {
@@ -28,12 +29,9 @@ async function postWithAuth() {
 
 
 
-async function AppendPosts()
+async function AppendPosts(posts)
 {
-    let posts = await postWithAuth();
-    c(posts)
     posts.map((post) => {
-        
         document.getElementById('crd-container').innerHTML += `
             <li class="card">
             <img src="https://picsum.photos/300/200?${post.id}" alt="">
@@ -47,15 +45,34 @@ async function AppendPosts()
             `
     });           
 }
+function clearli() {
+    const clear = document.querySelectorAll('li.card');
+clear.forEach(li => {
+    li.remove()
+});
+}
 
+
+function authSorting() {
+    c('auth')
+    clearli()
+    SortPostsByTitle(all)
+      }
+      
+function titleSorting() {
+    clearli()
+    SortPostsByAuth(all)
+}
 
 
 function SortPostsByAuth(posts) {
-    posts.sort((p1, p2) =>  (p1.auth > p2.auth) ? 1 : -1) 
+    posts.sort((p1, p2) =>  (p1.auth > p2.auth) ? 1 : -1)
+    AppendPosts(posts)
 }
 
 function SortPostsByTitle(posts) {
-    posts.sort((p1, p2) =>  (p1.auth > p2.auth) ? 1 : -1) 
+    posts.sort((p1, p2) =>  (p1.title > p2.title) ? 1 : -1) 
+    AppendPosts(posts)
 }
 
 function c (msg) {
